@@ -19,9 +19,17 @@ header{
     flex-direction: column;
     align-items: center;
 }
-/* img:hover{
-    content: url("./ressources/github-mark-white.svg");
-} */
+#img{
+    height: 150px;
+    aspect-ratio: 1;
+    background-image: url(../ressources/github-mark.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+#img:hover{
+    content: url("../ressources/github-mark-white.svg");
+}
 h1{
     font-size: 40px;
     color: gray;
@@ -31,6 +39,7 @@ h2{
     font-size: 30px;
     color: gray;
     font-weight: 200;
+    margin-top: 6rem;
 }
 form{
     margin-top: 24px;
@@ -41,9 +50,49 @@ form input:first-child{
     margin-right: 16px;
     width: 400px;
     padding: 8px;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: center;
+    border: none;
 }
 form input:last-child{
-    height: 38px;
+    height: 50px;
     width: 100px;
     padding: 8px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+}
+/* ul{
+    display: flex;
+    flex-direction: column;
+}
+ul .buttons{
+    align-self: flex-end;
+} */
+li{
+   margin: 16px;
+   color: gray;
+   display: flex;
+   justify-content: space-between;
+   font-size: 24px;
+}
+.buttons{
+    margin-left: 2rem;
+}
+#done{
+    background-color: green;
+    margin-right: 16px;
+}
+#delete{
+    background-color: red;
+}
+#done, #delete{
+    height: 2rem;
+    width: 5rem;
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
 }
