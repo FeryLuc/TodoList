@@ -1,10 +1,7 @@
 const formInput = document.getElementsByTagName("form")[0];
 const output = document.getElementsByTagName("ul")[0];
 
-const doneBtn = document.getElementById("done");
-const deleteBtn = document.getElementById("delete");
 
-// console.log(formInput);
 
 function addTask(e){
     e.preventDefault();
@@ -15,14 +12,49 @@ function addTask(e){
     output.innerHTML += `<li>${userValue}<div class="buttons"><button id="done">DONE</button><button id="delete">DELETE</button></div></li>`;
     
     // console.log(output);
-    console.log(deleteBtn, deleteBtn);
+    // console.log(deleteBtn, deleteBtn);
     // console.log("fonction appelée");
-    // console.log(e);
-    // console.log(output);
 }
 
 formInput.addEventListener("submit", addTask);
 
 
-function done(){}
-function remove(){}
+
+
+
+function getBtn(event){
+    const btn = event.target;
+    // console.log(btn);
+    const divParent = btn.parentElement;
+    const liParent = divParent.parentElement;
+    // console.log(liParent);
+
+    if (btn.id == "done") {
+        // console.log("done");
+        doneTask(liParent, btn);
+    } else if (btn.id == "delete") {
+        // console.log("delete");
+        removeTask(liParent);
+    } else if (btn.innerText == "undo") {
+        console.log("undo");
+    }
+}
+output.addEventListener("click", getBtn);
+
+
+
+
+function doneTask(li, doneBtn){
+    
+    li.style.textDecoration = "line-through";
+    li.style.color =  "red";
+
+    doneBtn.innerText = "Undo";
+    doneBtn.style.background ="black";
+    doneBtn.style.color ="white";
+    doneBtn.style.textTransform = "uppercase";
+}
+
+function removeTask(li){
+    li.remove();
+}
