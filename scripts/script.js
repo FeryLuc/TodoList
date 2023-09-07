@@ -10,7 +10,6 @@ function addTask(e){
         return;
     }
     output.innerHTML += `<li>${userValue}<div class="buttons"><button id="done">DONE</button><button id="delete">DELETE</button></div></li>`;
-    
     // console.log(output);
     // console.log(deleteBtn, deleteBtn);
     // console.log("fonction appelée");
@@ -31,18 +30,20 @@ function getBtn(event){
 
     if (btn.id == "done") {
         // console.log("done");
-        doneTask(liParent, btn);
+        if (isDone) {
+            doneTask(liParent, btn);
+        } else {
+            undoTask(liParent, btn);
+        }
     } else if (btn.id == "delete") {
         // console.log("delete");
         removeTask(liParent);
-    } else if (btn.innerText == "undo") {
-        console.log("undo");
     }
 }
 output.addEventListener("click", getBtn);
 
 
-
+let isDone = true;
 
 function doneTask(li, doneBtn){
     
@@ -53,6 +54,18 @@ function doneTask(li, doneBtn){
     doneBtn.style.background ="black";
     doneBtn.style.color ="white";
     doneBtn.style.textTransform = "uppercase";
+    isDone = false;
+}
+
+function undoTask(li, doneBtn){
+    li.style.textDecoration = "none";
+    li.style.color =  "gray";
+
+    doneBtn.innerText = "done";
+    doneBtn.style.background ="green";
+    doneBtn.style.color ="black";
+    doneBtn.style.textTransform = "uppercase";
+    isDone = true;
 }
 
 function removeTask(li){
