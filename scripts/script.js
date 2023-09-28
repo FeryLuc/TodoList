@@ -13,6 +13,7 @@ function addTask(e){
     // console.log(output);
     // console.log(deleteBtn, deleteBtn);
     // console.log("fonction appelée");
+    formInput[0].value = "";
 }
 
 formInput.addEventListener("submit", addTask);
